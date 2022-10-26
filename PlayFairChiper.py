@@ -1,18 +1,18 @@
-key=input("Enter key:")#membuat kunci yang akan di inputkan 
+key=input("Enter key:")
 key=key.replace(" ", "")
 key=key.upper()
 def matrix(x,y,initial):
     return [[initial for i in range(x)] for j in range(y)]
     
 result=list()
-for c in key: # menyimpan kunci
+for c in key: #storing key
     if c not in result:
         if c=='J':
             result.append('I')
         else:
             result.append(c)
 flag=0
-for i in range(65,91): # menyimpan karakter lain
+for i in range(65,91): #storing other character
     if chr(i) not in result:
         if i==73 and chr(74) not in result:
             result.append("I")
@@ -22,13 +22,13 @@ for i in range(65,91): # menyimpan karakter lain
         else:
             result.append(chr(i))
 k=0
-my_matrix=matrix(5,5,0) # inisialisasi matriks
-for i in range(0,5): # membuat matriks
+my_matrix=matrix(5,5,0) #initialize matrix
+for i in range(0,5): #making matrix
     for j in range(0,5):
         my_matrix[i][j]=result[k]
         k+=1
 
-def locindex(c): # dapatkan lokasi setiap karakter
+def locindex(c): #get location of each character
     loc=list()
     if c=='J':
         c='I'
@@ -39,7 +39,7 @@ def locindex(c): # dapatkan lokasi setiap karakter
                 loc.append(k)
                 return loc
             
-def encrypt():  # Enskrpsi
+def encrypt():  #Encryption
     msg=str(input("ENTER MSG:"))
     msg=msg.upper()
     msg=msg.replace(" ", "")             
@@ -64,8 +64,8 @@ def encrypt():  # Enskrpsi
             print("{}{}".format(my_matrix[loc[0]][loc1[1]],my_matrix[loc1[0]][loc[1]]),end=' ')    
         i=i+2        
                  
-def decrypt():  # Deskripsi
-    msg=str(input("ENTER CIPHER TEXT:")) #menginputkan text
+def decrypt():  #decryption
+    msg=str(input("ENTER CIPHER TEXT:"))
     msg=msg.upper()
     msg=msg.replace(" ", "")
     print("PLAIN TEXT:",end=' ')
@@ -83,8 +83,8 @@ def decrypt():  # Deskripsi
             print("{}{}".format(my_matrix[loc[0]][loc1[1]],my_matrix[loc1[0]][loc[1]]),end=' ')    
         i=i+2        
 
-while(1): #membuat pilihan 
-    choice=int(input("\n 1.Encryption: \n 2.Decryption: \n 3.EXIT:"))
+while(1):
+    choice=int(input("\n 1.Encryption \n 2.Decryption: \n 3.EXIT"))
     if choice==1:
         encrypt()
     elif choice==2:
